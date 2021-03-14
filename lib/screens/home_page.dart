@@ -1,109 +1,54 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:tages_test_app/widgets/bank_note_status.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tages_test_app/balance/balance_repository.dart';
+import 'package:tages_test_app/balance/bloc/balance_bloc.dart';
+import 'package:tages_test_app/widgets/home_screen_body.dart';
 
 class HomePage extends StatelessWidget {
-  final _textSize = 20.0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
+    final balanceRepository = BankNotes();
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/Group.png'),
+              ),
+            ),
+          ),
+          title: Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Container(
+              child: Image.asset('assets/images/ActionBar.png'),
+            ),
+          ),
+        ),
+        body: BlocProvider<BalanceBloc>(
+          create: (context) => BalanceBloc(balanceRepository),
+          child: HomeScreenBody(),
+        ),
+        bottomNavigationBar: Container(
+          height: MediaQuery.of(context).devicePixelRatio * 30,
           decoration: BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/images/Group.png'),
+              fit: BoxFit.fill,
+              image: AssetImage('assets/images/Background_bottom.png'),
             ),
-          ),
-        ),
-        title: Padding(
-          padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          child: Container(
-            child: Image.asset('assets/images/ActionBar.png'),
-          ),
-        ),
-      ),
-      body: Column(
-        children: [
-          Column(
-            children: [
-              Container(
-                height: MediaQuery.of(context).devicePixelRatio * 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/Background.png'),
-                  ),
-                ),
-              ),
-              Container(
-                height: MediaQuery.of(context).devicePixelRatio * 50,
-                width: MediaQuery.of(context).devicePixelRatio * 75,
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
-                child: FloatingActionButton.extended(
-                  backgroundColor: Colors.purple,
-                  onPressed: () => {},
-                  label: Text(
-                    'Выдать сумму',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            height: MediaQuery.of(context).devicePixelRatio * 5,
-            color: Colors.grey[100],
-          ),
-          Container(
-            height: MediaQuery.of(context).devicePixelRatio * 50,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Банкомат не может выдать ',
-                  style: TextStyle(
-                    color: Colors.purple,
-                    fontSize: _textSize,
-                  ),
-                ),
-                Text(
-                  'запрашиваемую сумму',
-                  style: TextStyle(
-                    color: Colors.purple,
-                    fontSize: _textSize,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).devicePixelRatio * 5,
-            color: Colors.grey[100],
-          ),
-          Container(
-            height: MediaQuery.of(context).devicePixelRatio * 50,
-            alignment: Alignment.center,
-            child: BankNoteStatus(),
-          ),
-          Container(
-            height: MediaQuery.of(context).devicePixelRatio * 5,
-            color: Colors.grey[100],
-          ),
-        ],
-      ),
-      bottomNavigationBar: Container(
-        height: MediaQuery.of(context).devicePixelRatio * 40,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage('assets/images/Background_bottom.png'),
           ),
         ),
       ),
     );
   }
 }
+
+
 
 // ListView.separated(
 //           physics: const NeverScrollableScrollPhysics(),

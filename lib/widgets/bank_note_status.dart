@@ -13,7 +13,7 @@ class BankNoteStatus extends StatelessWidget {
               child: Text(
                 'Баланс банкомата',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 15,color: Color(0xffA3A2AC)
                 ),
               ),
             ),
@@ -25,7 +25,7 @@ class BankNoteStatus extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('50 x 100 рублей'),
+                          child: Text('100 x 200 рублей'),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
