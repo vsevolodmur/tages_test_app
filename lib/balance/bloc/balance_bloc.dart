@@ -9,9 +9,7 @@ part 'balance_event.dart';
 part 'balance_state.dart';
 
 class BalanceBloc extends Bloc<BalanceEvent, BalanceState> {
-  final BankNotes balanceRepository;
-
-  BalanceBloc(this.balanceRepository) : super(BalanceInitial());
+  BalanceBloc(BankNotes balanceRepository) : super(BalanceInitial(BankNotes().banknotes));
 
   @override
   Stream<BalanceState> mapEventToState(

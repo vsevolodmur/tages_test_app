@@ -1,7 +1,6 @@
 // import 'package:tages_test_app/balance/balance_repository.dart';
 
 class BalanceChange {
-  // Map initialBankNotes = BankNotes().banknotes;
   // Map bankNotesGiven = BankNotes().banknotes;
 
   getChangedBalance(Map balance, num requestedAmount) {

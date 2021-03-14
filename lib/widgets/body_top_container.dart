@@ -33,7 +33,7 @@ class BodyTop extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 80),
                       child: TextField(
-                        onChanged: (String text) => balanceBloc
+                        onSubmitted: (String text) => balanceBloc
                             .add(ChangeBalanceEvent(int.parse(text))),
                         controller: textController,
                         cursorRadius: Radius.circular(5),
