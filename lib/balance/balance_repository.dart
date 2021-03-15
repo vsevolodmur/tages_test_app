@@ -1,5 +1,3 @@
-import 'package:tages_test_app/balance/balance_change.dart';
-
 class BankNotes {
   Map<String, dynamic> banknotes = {
     '5000 рублей': 10,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tages_test_app/balance/balance_repository.dart';
 import 'package:tages_test_app/balance/bloc/balance_bloc.dart';
 
 class BodyTop extends StatelessWidget {
