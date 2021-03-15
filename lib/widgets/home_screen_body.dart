@@ -56,7 +56,7 @@ class HomeScreenBody extends StatelessWidget {
                 height: MediaQuery.of(context).devicePixelRatio * 30,
                 child: Center(
                     child: Text(
-                  'В банкомате отсутствуют банкноты запрашиваемого номинала',
+                  'В банкомате отсутствуют требуемые купюры',
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   style: TextStyle(
