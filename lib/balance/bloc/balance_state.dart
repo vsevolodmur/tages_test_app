@@ -16,3 +16,8 @@ class NoMoneyState extends BalanceState {
   final Map notes;
   NoMoneyState(this.notes);
 }
+
+class NoBankNoteNominalState extends BalanceState {
+  final Map notes;
+  NoBankNoteNominalState(this.notes);
+}

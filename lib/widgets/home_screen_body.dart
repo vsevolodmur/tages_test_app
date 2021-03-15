@@ -51,6 +51,21 @@ class HomeScreenBody extends StatelessWidget {
                 )),
               );
             }
+            if (state is NoBankNoteNominalState) {
+              return Container(
+                height: MediaQuery.of(context).devicePixelRatio * 30,
+                child: Center(
+                    child: Text(
+                  'В банкомате отсутствуют банкноты запрашиваемого номинала',
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  style: TextStyle(
+                      color: Color(0xffE61EAD),
+                      fontSize: _textSize,
+                      fontWeight: FontWeight.normal),
+                )),
+              );
+            }
             if (state is ChangedBalanceState) {
               return Padding(
                 padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),

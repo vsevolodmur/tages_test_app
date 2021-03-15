@@ -10,7 +10,7 @@ class BankNoteStatus extends StatelessWidget {
     return BlocBuilder<BalanceBloc, BalanceState>(
       // ignore: missing_return
       builder: (context, state) {
-        if (state is BalanceInitial || state is NoMoneyState) {
+        if (state is BalanceInitial || state is NoMoneyState || state is NoBankNoteNominalState) {
           return Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
             child: Container(

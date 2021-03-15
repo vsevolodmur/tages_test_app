@@ -21,7 +21,14 @@ class BalanceBloc extends Bloc<BalanceEvent, BalanceState> {
           BalanceChange().getChangedBalance(event.requestedAmount);
       if (_loadedBalance is String) {
         yield NoMoneyState(BankNotes().banknotes);
-      } else {
+      }
+      if (_loadedBalance is int) {
+        yield NoBankNoteNominalState(BankNotes().banknotes);
+      }
+      // if (_loadedBalance[1] == 0) {
+      //   yield NoBankNoteNominalState();
+      // } 
+      else {
         yield ChangedBalanceState(availableBankNotes: _loadedBalance);
       }
     }

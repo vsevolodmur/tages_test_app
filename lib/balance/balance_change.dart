@@ -17,9 +17,7 @@ class BalanceChange {
       sum += e;
     });
 
-    if (sum < requestedAmount) {
-      return 'No money';
-    } else {
+    if (sum >= requestedAmount) {
       balance.forEach((key, value) {
         int bankNoteDenom = int.parse(key.toString().split(' ')[0]);
         int bankNoteNeeded = requestedAmount ~/ bankNoteDenom;
@@ -33,8 +31,17 @@ class BalanceChange {
           bankNotesGiven.putIfAbsent(key, () => bankNoteNeeded);
         }
       });
+      sum = 0;
+      bankNotesGiven.values.forEach((num e) {
+        sum += e;
+      });
+      if (sum == 0){
+        return 0; 
+      }
 
       return [balance, bankNotesGiven];
+    } else {
+      return 'No money';
     }
   }
 }
