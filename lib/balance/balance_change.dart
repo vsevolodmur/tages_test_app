@@ -1,9 +1,9 @@
-// import 'package:tages_test_app/balance/balance_repository.dart';
+import 'package:tages_test_app/balance/balance_repository.dart';
 
 class BalanceChange {
-  // Map bankNotesGiven = BankNotes().banknotes;
-
-  getChangedBalance(Map balance, num requestedAmount) {
+  getChangedBalance(num requestedAmount) {
+    Map bankNotesGiven = BankNotes().getNotes(BankNotes().banknotes);
+    Map balance = BankNotes().getNotes(BankNotes().banknotes);
     List<num> bankLimitsList = [];
     num sum = 0;
 
@@ -26,14 +26,15 @@ class BalanceChange {
         if (bankNoteNeeded > value) {
           requestedAmount = requestedAmount - value * bankNoteDenom;
           balance.update(key, (value) => value - value);
-          // bankNotesGiven.update(key, (value) => value);
+          bankNotesGiven.update(key, (value) => value);
         } else {
           requestedAmount = requestedAmount - bankNoteNeeded * bankNoteDenom;
           balance.update(key, (value) => value - bankNoteNeeded);
-          // bankNotesGiven.update(key, (value) => bankNoteNeeded);
+          bankNotesGiven.update(key, (value) => bankNoteNeeded);
         }
       });
-      return balance;
+      BankNotes().updateNotes(balance);
+      return [balance, bankNotesGiven];
     }
   }
 }

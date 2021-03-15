@@ -11,3 +11,8 @@ class ChangedBalanceState extends BalanceState {
   dynamic availableBankNotes;
   ChangedBalanceState({@required this.availableBankNotes});
 }
+
+class NoMoneyState extends BalanceState {
+  final Map notes;
+  NoMoneyState(this.notes);
+}

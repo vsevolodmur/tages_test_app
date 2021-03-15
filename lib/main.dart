@@ -12,6 +12,12 @@ class MyApp extends StatelessWidget {
       title: 'Tages Test App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          bodyText2: TextStyle(fontWeight: FontWeight.w500),
+        ).apply(
+          bodyColor: Color(0xff3827B4),
+        
+        ),
       ),
       home: HomePage(),
     );

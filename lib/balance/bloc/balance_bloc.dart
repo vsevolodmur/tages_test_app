@@ -9,17 +9,21 @@ part 'balance_event.dart';
 part 'balance_state.dart';
 
 class BalanceBloc extends Bloc<BalanceEvent, BalanceState> {
-  BalanceBloc(BankNotes balanceRepository) : super(BalanceInitial(BankNotes().banknotes));
+  BalanceBloc(BankNotes balanceRepository)
+      : super(BalanceInitial(BankNotes().banknotes));
 
   @override
   Stream<BalanceState> mapEventToState(
     BalanceEvent event,
   ) async* {
     if (event is ChangeBalanceEvent) {
-      final _loadedBalance = BalanceChange()
-          .getChangedBalance(BankNotes().banknotes, event.requestedAmount);
-
-      yield ChangedBalanceState(availableBankNotes: _loadedBalance);
+      final _loadedBalance =
+          BalanceChange().getChangedBalance(event.requestedAmount);
+      if (_loadedBalance is String) {
+        yield NoMoneyState(BankNotes().banknotes);
+      } else {
+        yield ChangedBalanceState(availableBankNotes: _loadedBalance);
+      }
     }
   }
 }

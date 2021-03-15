@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tages_test_app/balance/balance_change.dart';
 import 'package:tages_test_app/balance/balance_repository.dart';
 import 'package:tages_test_app/balance/bloc/balance_bloc.dart';
 import 'package:tages_test_app/widgets/home_screen_body.dart';
@@ -12,7 +11,7 @@ class HomePage extends StatelessWidget {
     final balanceRepository = BankNotes();
     return GestureDetector(
       onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
+        FocusScope.of(context).requestFocus(FocusNode());
       },
       child: Scaffold(
         appBar: AppBar(
