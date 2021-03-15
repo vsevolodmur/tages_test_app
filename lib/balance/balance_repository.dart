@@ -8,8 +8,11 @@ class BankNotes {
     '100 рублей': 50,
   };
 
-  getNotes(banknotes) => banknotes;
+  static final BankNotes _balance = BankNotes._initializerFunction();
 
-  updateNotes(newBalance) => getNotes(newBalance);
+  factory BankNotes() {
+    return _balance;
+  }
 
-}
+  BankNotes._initializerFunction();
+ }

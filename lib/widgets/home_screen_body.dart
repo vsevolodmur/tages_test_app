@@ -96,7 +96,7 @@ class HomeScreenBody extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: 65,
+                              width: 50,
                             ),
                             Container(
                               child: Column(

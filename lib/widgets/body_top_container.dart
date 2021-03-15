@@ -14,7 +14,7 @@ class BodyTop extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Container(
-              height: MediaQuery.of(context).devicePixelRatio * 60,
+              height: MediaQuery.of(context).devicePixelRatio * 55,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
